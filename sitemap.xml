@@ -2,9 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://murphypei.github.io/blog/2020/04/tf-serialize-format.html</loc>
+    
+    <lastmod>2020-04-15T14:27:13.709Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://murphypei.github.io/blog/2020/04/memory-align.html</loc>
     
-    <lastmod>2020-04-12T05:53:33.963Z</lastmod>
+    <lastmod>2020-04-15T14:27:13.704Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://murphypei.github.io/blog/2019/09/trt-useage.html</loc>
+    
+    <lastmod>2020-04-15T14:27:13.699Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://murphypei.github.io/blog/2019/08/tensorflow-show-layer.html</loc>
+    
+    <lastmod>2020-04-15T14:27:13.693Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://murphypei.github.io/blog/2018/08/mxnet-load-pretrained.html</loc>
+    
+    <lastmod>2020-04-15T14:27:13.686Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://murphypei.github.io/blog/2018/08/mxnet-module.html</loc>
+    
+    <lastmod>2020-04-15T14:27:13.679Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://murphypei.github.io/blog/2018/08/mxnet-symbol.html</loc>
+    
+    <lastmod>2020-04-15T14:27:13.674Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://murphypei.github.io/blog/2018/08/mxnet-install-ndarray.html</loc>
+    
+    <lastmod>2020-04-15T14:27:13.669Z</lastmod>
     
   </url>
   
@@ -93,13 +142,6 @@
   </url>
   
   <url>
-    <loc>https://murphypei.github.io/blog/2020/02/right-reference.html</loc>
-    
-    <lastmod>2020-04-12T04:18:21.558Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://murphypei.github.io/blog/2020/03/call-derived-function.html</loc>
     
     <lastmod>2020-04-12T04:18:21.558Z</lastmod>
@@ -107,14 +149,21 @@
   </url>
   
   <url>
-    <loc>https://murphypei.github.io/blog/2017/05/vs-link-error1107.html</loc>
+    <loc>https://murphypei.github.io/blog/2020/02/right-reference.html</loc>
+    
+    <lastmod>2020-04-12T04:18:21.558Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://murphypei.github.io/blog/2017/05/iterator-effectness.html</loc>
     
     <lastmod>2020-04-12T04:18:10.816Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://murphypei.github.io/blog/2017/05/iterator-effectness.html</loc>
+    <loc>https://murphypei.github.io/blog/2017/05/vs-link-error1107.html</loc>
     
     <lastmod>2020-04-12T04:18:10.816Z</lastmod>
     
@@ -142,13 +191,6 @@
   </url>
   
   <url>
-    <loc>https://murphypei.github.io/blog/2017/06/qt-multithread.html</loc>
-    
-    <lastmod>2020-04-12T04:18:10.812Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://murphypei.github.io/blog/2017/06/windows-glog.html</loc>
     
     <lastmod>2020-04-12T04:18:10.812Z</lastmod>
@@ -156,7 +198,7 @@
   </url>
   
   <url>
-    <loc>https://murphypei.github.io/blog/2017/10/C++11-14-1.html</loc>
+    <loc>https://murphypei.github.io/blog/2017/06/qt-multithread.html</loc>
     
     <lastmod>2020-04-12T04:18:10.812Z</lastmod>
     
@@ -177,7 +219,7 @@
   </url>
   
   <url>
-    <loc>https://murphypei.github.io/blog/2018/08/cpp-inline-define.html</loc>
+    <loc>https://murphypei.github.io/blog/2017/10/C++11-14-1.html</loc>
     
     <lastmod>2020-04-12T04:18:10.812Z</lastmod>
     
@@ -205,6 +247,13 @@
   </url>
   
   <url>
+    <loc>https://murphypei.github.io/blog/2018/08/cpp-inline-define.html</loc>
+    
+    <lastmod>2020-04-12T04:18:10.812Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://murphypei.github.io/blog/2018/10/compile-fpic.html</loc>
     
     <lastmod>2020-04-12T04:18:10.812Z</lastmod>
@@ -220,13 +269,6 @@
   
   <url>
     <loc>https://murphypei.github.io/blog/2018/12/cpp_interface.html</loc>
-    
-    <lastmod>2020-04-12T04:18:10.812Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://murphypei.github.io/blog/2018/12/cpp-cow.html</loc>
     
     <lastmod>2020-04-12T04:18:10.812Z</lastmod>
     
@@ -254,6 +296,13 @@
   </url>
   
   <url>
+    <loc>https://murphypei.github.io/blog/2019/02/cpp-new-delete.html</loc>
+    
+    <lastmod>2020-04-12T04:18:10.812Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://murphypei.github.io/blog/2019/01/linux-heap.html</loc>
     
     <lastmod>2020-04-12T04:18:10.812Z</lastmod>
@@ -261,7 +310,7 @@
   </url>
   
   <url>
-    <loc>https://murphypei.github.io/blog/2019/02/cpp-new-delete.html</loc>
+    <loc>https://murphypei.github.io/blog/2018/12/cpp-cow.html</loc>
     
     <lastmod>2020-04-12T04:18:10.812Z</lastmod>
     
@@ -275,20 +324,6 @@
   </url>
   
   <url>
-    <loc>https://murphypei.github.io/blog/2019/04/cpp-std-ref.html</loc>
-    
-    <lastmod>2020-04-12T04:18:10.812Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://murphypei.github.io/blog/2019/04/cpp-concurrent-2.html</loc>
-    
-    <lastmod>2020-04-12T04:18:10.812Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://murphypei.github.io/blog/2019/04/cpp-concurrent-1.html</loc>
     
     <lastmod>2020-04-12T04:18:10.812Z</lastmod>
@@ -296,14 +331,7 @@
   </url>
   
   <url>
-    <loc>https://murphypei.github.io/blog/2019/04/cpp-concurrent-3.html</loc>
-    
-    <lastmod>2020-04-12T04:18:10.812Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://murphypei.github.io/blog/2019/04/cpp-concurrent-4.html</loc>
+    <loc>https://murphypei.github.io/blog/2019/04/cpp-std-ref.html</loc>
     
     <lastmod>2020-04-12T04:18:10.812Z</lastmod>
     
@@ -317,6 +345,20 @@
   </url>
   
   <url>
+    <loc>https://murphypei.github.io/blog/2019/04/cpp-concurrent-2.html</loc>
+    
+    <lastmod>2020-04-12T04:18:10.812Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://murphypei.github.io/blog/2019/04/cpp-concurrent-4.html</loc>
+    
+    <lastmod>2020-04-12T04:18:10.812Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://murphypei.github.io/blog/2019/06/struct-bit-field.html</loc>
     
     <lastmod>2020-04-12T04:18:10.812Z</lastmod>
@@ -324,7 +366,7 @@
   </url>
   
   <url>
-    <loc>https://murphypei.github.io/blog/2019/06/link-sort.html</loc>
+    <loc>https://murphypei.github.io/blog/2019/08/clion-show-dynamic-array.html</loc>
     
     <lastmod>2020-04-12T04:18:10.812Z</lastmod>
     
@@ -332,13 +374,6 @@
   
   <url>
     <loc>https://murphypei.github.io/blog/2019/07/thread-safe-reentrant-function.html</loc>
-    
-    <lastmod>2020-04-12T04:18:10.812Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://murphypei.github.io/blog/2019/08/clion-show-dynamic-array.html</loc>
     
     <lastmod>2020-04-12T04:18:10.812Z</lastmod>
     
@@ -373,13 +408,6 @@
   </url>
   
   <url>
-    <loc>https://murphypei.github.io/blog/2019/10/cpp-random.html</loc>
-    
-    <lastmod>2020-04-12T04:18:10.812Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://murphypei.github.io/blog/2019/10/cuda-parallel.html</loc>
     
     <lastmod>2020-04-12T04:18:10.812Z</lastmod>
@@ -387,7 +415,21 @@
   </url>
   
   <url>
+    <loc>https://murphypei.github.io/blog/2019/10/cpp-random.html</loc>
+    
+    <lastmod>2020-04-12T04:18:10.812Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://murphypei.github.io/blog/2019/11/stl-binary.html</loc>
+    
+    <lastmod>2020-04-12T04:18:10.812Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://murphypei.github.io/blog/2019/04/cpp-concurrent-3.html</loc>
     
     <lastmod>2020-04-12T04:18:10.812Z</lastmod>
     
@@ -402,6 +444,13 @@
   
   <url>
     <loc>https://murphypei.github.io/blog/2020/02/thread-local.html</loc>
+    
+    <lastmod>2020-04-12T04:18:10.812Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://murphypei.github.io/blog/2019/06/link-sort.html</loc>
     
     <lastmod>2020-04-12T04:18:10.812Z</lastmod>
     
@@ -478,13 +527,6 @@
   </url>
   
   <url>
-    <loc>https://murphypei.github.io/blog/2019/09/trt-useage.html</loc>
-    
-    <lastmod>2020-03-26T08:19:37.588Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://murphypei.github.io/blog/2019/08/vm-black-screen.html</loc>
     
     <lastmod>2020-03-26T08:19:37.584Z</lastmod>
@@ -502,13 +544,6 @@
     <loc>https://murphypei.github.io/blog/2019/08/zombie-orphan-process.html</loc>
     
     <lastmod>2020-03-26T08:19:37.578Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://murphypei.github.io/blog/2019/08/tensorflow-show-layer.html</loc>
-    
-    <lastmod>2020-03-26T08:19:37.575Z</lastmod>
     
   </url>
   
@@ -705,34 +740,6 @@
     <loc>https://murphypei.github.io/blog/2018/09/kmeans.html</loc>
     
     <lastmod>2020-03-26T08:19:37.382Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://murphypei.github.io/blog/2018/08/mxnet-load-pretrained.html</loc>
-    
-    <lastmod>2020-03-26T08:19:37.378Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://murphypei.github.io/blog/2018/08/mxnet-module.html</loc>
-    
-    <lastmod>2020-03-26T08:19:37.374Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://murphypei.github.io/blog/2018/08/mxnet-symbol.html</loc>
-    
-    <lastmod>2020-03-26T08:19:37.371Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://murphypei.github.io/blog/2018/08/mxnet-install-ndarray.html</loc>
-    
-    <lastmod>2020-03-26T08:19:37.367Z</lastmod>
     
   </url>
   

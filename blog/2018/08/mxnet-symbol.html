@@ -58,19 +58,19 @@
   };
 </script>
 
-  <meta name="description" content="在MXNet框架学习（1）中，我们介绍了一些有关MXNet的安装和基础知识，并介绍了NDArray API（简而言之：NDArrays可用于存储数据、参数等信息）。在介绍过数据的存储后，本文将谈谈MXNet定义计算步骤的方式。">
+  <meta name="description" content="在MXNe t框架学习（1）中，我们介绍了一些有关MXNet的安装和基础知识，并介绍了NDArray API（简而言之：NDArrays可用于存储数据、参数等信息）。在介绍过数据的存储后，本文将谈谈MXNet定义计算步骤的方式。">
 <meta name="keywords" content="Python,深度学习,MXNet,symbol">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MXNet框架学习（2）：数据流编程和Symbol">
+<meta property="og:title" content="MXNet 框架学习（2）：数据流编程和 Symbol">
 <meta property="og:url" content="https://murphypei.github.io/blog/2018/08/mxnet-symbol.html">
 <meta property="og:site_name" content="拾荒志">
-<meta property="og:description" content="在MXNet框架学习（1）中，我们介绍了一些有关MXNet的安装和基础知识，并介绍了NDArray API（简而言之：NDArrays可用于存储数据、参数等信息）。在介绍过数据的存储后，本文将谈谈MXNet定义计算步骤的方式。">
+<meta property="og:description" content="在MXNe t框架学习（1）中，我们介绍了一些有关MXNet的安装和基础知识，并介绍了NDArray API（简而言之：NDArrays可用于存储数据、参数等信息）。在介绍过数据的存储后，本文将谈谈MXNet定义计算步骤的方式。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://murphypei.github.io/images/posts/dl/calc_example.png">
-<meta property="og:updated_time" content="2020-03-26T08:19:37.371Z">
+<meta property="og:updated_time" content="2020-04-15T14:27:13.674Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MXNet框架学习（2）：数据流编程和Symbol">
-<meta name="twitter:description" content="在MXNet框架学习（1）中，我们介绍了一些有关MXNet的安装和基础知识，并介绍了NDArray API（简而言之：NDArrays可用于存储数据、参数等信息）。在介绍过数据的存储后，本文将谈谈MXNet定义计算步骤的方式。">
+<meta name="twitter:title" content="MXNet 框架学习（2）：数据流编程和 Symbol">
+<meta name="twitter:description" content="在MXNe t框架学习（1）中，我们介绍了一些有关MXNet的安装和基础知识，并介绍了NDArray API（简而言之：NDArrays可用于存储数据、参数等信息）。在介绍过数据的存储后，本文将谈谈MXNet定义计算步骤的方式。">
 <meta name="twitter:image" content="https://murphypei.github.io/images/posts/dl/calc_example.png">
   <link rel="alternate" href="/atom.xml" title="拾荒志" type="application/atom+xml">
   <link rel="canonical" href="https://murphypei.github.io/blog/2018/08/mxnet-symbol">
@@ -87,7 +87,7 @@
   };
 </script>
 
-  <title>MXNet框架学习（2）：数据流编程和Symbol | 拾荒志</title>
+  <title>MXNet 框架学习（2）：数据流编程和 Symbol | 拾荒志</title>
   <meta name="generator" content="Hexo 3.9.0">
   
 
@@ -250,7 +250,7 @@
       <meta itemprop="name" content="拾荒志">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">MXNet框架学习（2）：数据流编程和Symbol
+        <h2 class="post-title" itemprop="name headline">MXNet 框架学习（2）：数据流编程和 Symbol
 
           
         </h2>
@@ -277,7 +277,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-26 16:19:37" itemprop="dateModified" datetime="2020-03-26T16:19:37+08:00">2020-03-26</time>
+                <time title="修改时间：2020-04-15 22:27:13" itemprop="dateModified" datetime="2020-04-15T22:27:13+08:00">2020-04-15</time>
               </span>
             
           
@@ -287,7 +287,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度学习/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MXNet/" itemprop="url" rel="index"><span itemprop="name">MXNet</span></a></span>
 
                 
                 
@@ -335,9 +335,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在<a href="https://murphypei.github.io/blog/2018/08/mxnet-install-ndarray.html">MXNet框架学习（1）</a>中，我们介绍了一些有关MXNet的安装和基础知识，并介绍了NDArray API（简而言之：NDArrays可用于存储数据、参数等信息）。在介绍过数据的存储后，本文将谈谈MXNet定义计算步骤的方式。</p>
+        <p>在<a href="https://murphypei.github.io/blog/2018/08/mxnet-install-ndarray.html">MXNe t框架学习（1）</a>中，我们介绍了一些有关MXNet的安装和基础知识，并介绍了NDArray API（简而言之：NDArrays可用于存储数据、参数等信息）。在介绍过数据的存储后，本文将谈谈MXNet定义计算步骤的方式。</p>
 <a id="more"></a>
-<h3 id="1-数据流编程"><a href="#1-数据流编程" class="headerlink" title="1. 数据流编程"></a>1. 数据流编程</h3><p>symbol可以说是MXNet最重要的一部分API了，主要定义了计算流程。在此之前，我觉得有必要说一下不同的编程方式：</p>
+<h3 id="1-数据流编程"><a href="#1-数据流编程" class="headerlink" title="1. 数据流编程"></a>1. 数据流编程</h3><p>symbol 可以说是 MXNet 最重要的一部分API了，主要定义了计算流程。在此之前，我觉得有必要说一下不同的编程方式：</p>
 <p>我们都知道那个著名的公式：“程序=数据结构+代码（算法）”。在MXNet中，NDArrays是数据结构，那么接下来需要写代码（算法）了，所谓的代码或者算法其实就是如何指导计算机来进行一步步的计算。</p>
 <p>对于绝大多数情况下的编程，我们需要明确定义所有步骤，随后针对数据按顺序运行。这也叫“指令式编程（Imperative programming）”，Fortran、Pascal、C、C++等都是这样做的，这么做也没什么错。</p>
 <p>然而神经网络从本质上来说是一种并行的结构：在特定的技术层中，所有输出都可同步计算。每个层也可以并行运行。因此为了获得最佳性能，我们必须使用多线程或其他类似机制自行实现并行处理。具体做法大概都知道，而就算写出了恰当的代码，如果数据规模或网络布局不断变化，如何确保能可复用地进行？好在还有其他备选方案。</p>
@@ -379,7 +379,7 @@
     <strong>本文作者： </strong>murphypei</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://murphypei.github.io/blog/2018/08/mxnet-symbol.html" title="MXNet框架学习（2）：数据流编程和Symbol">https://murphypei.github.io/blog/2018/08/mxnet-symbol.html</a>
+    <a href="https://murphypei.github.io/blog/2018/08/mxnet-symbol.html" title="MXNet 框架学习（2）：数据流编程和 Symbol">https://murphypei.github.io/blog/2018/08/mxnet-symbol.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -492,7 +492,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-count">148</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -543,7 +543,13 @@
         
           
         
-        <span class="site-state-item-count">18</span>
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -1296,7 +1302,15 @@
         
           
         
-        <span class="site-state-item-count">367</span>
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">371</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1367,12 +1381,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">489k</span>
+    <span title="站点总字数">494k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:35</span>
+    <span title="站点阅读时长">13:44</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>

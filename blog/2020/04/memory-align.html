@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="拾荒志">
 <meta property="og:description" content="C/C++ 编程中常见的一个概念是内存对齐，这里的对齐简单来讲就是分配的内存地址的起始位置是某个数字的倍数。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-12T05:53:33.963Z">
+<meta property="og:updated_time" content="2020-04-15T14:27:13.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈内存对齐">
 <meta name="twitter:description" content="C/C++ 编程中常见的一个概念是内存对齐，这里的对齐简单来讲就是分配的内存地址的起始位置是某个数字的倍数。">
@@ -264,11 +264,19 @@
                 
               
 
-              <time title="创建时间：2020-04-12 12:14:38 / 修改时间：13:53:33" itemprop="dateCreated datePublished" datetime="2020-04-12T12:14:38+08:00">2020-04-12</time>
+              <time title="创建时间：2020-04-12 12:14:38" itemprop="dateCreated datePublished" datetime="2020-04-12T12:14:38+08:00">2020-04-12</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-15 22:27:13" itemprop="dateModified" datetime="2020-04-15T22:27:13+08:00">2020-04-15</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -302,7 +310,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>3.8k</span>
+              <span>4k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -312,7 +320,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>6 分钟</span>
+              <span>7 分钟</span>
             </span>
           
 
@@ -340,12 +348,12 @@
 <p>当然上面只是示例代码，可以通过类型定义等方法优化代码的写法等等。</p>
 <h3 id="堆上内存对齐"><a href="#堆上内存对齐" class="headerlink" title="堆上内存对齐"></a>堆上内存对齐</h3><p>以上通过编译器的修饰语法来解决内存对齐，貌似很简单，但是还是存在一个问题。以上的两个数组变量都是局部变量，也就是分配在<strong>栈上，内存地址由编译器在编译时确定</strong>，因此预编译指令会生效。但用new 和 malloc 动态创建的对象则存储在堆中，其地址在运行时确定。C++ 的运行时库并不会关心预编译指令声明的对齐方式，我们需要更强有力的手段来确保内存对齐。</p>
 <p>废话不多说，我这里以 MNN 中的内存对齐代码为例：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span> **<span class="title">alignPointer</span><span class="params">(<span class="keyword">void</span> **ptr, <span class="keyword">size_t</span> alignment)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">void</span> **)((<span class="keyword">intptr_t</span>)((<span class="keyword">unsigned</span> <span class="keyword">char</span> *)ptr + alignment - <span class="number">1</span>) &amp; -alignment);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function"><span class="keyword">void</span> *<span class="title">MNNMemoryAllocAlign</span><span class="params">(<span class="keyword">size_t</span> size, <span class="keyword">size_t</span> alignment)</span> </span>&#123;</span><br><span class="line">    MNN_ASSERT(size &gt; <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> MNN_DEBUG_MEMORY</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">malloc</span>(size);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    <span class="keyword">void</span> **origin = (<span class="keyword">void</span> **)<span class="built_in">malloc</span>(size + <span class="keyword">sizeof</span>(<span class="keyword">void</span> *) + alignment);</span><br><span class="line">    MNN_ASSERT(origin != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span> (!origin) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> **aligned = alignPointer(origin + <span class="number">1</span>, alignment);</span><br><span class="line">    aligned[<span class="number">-1</span>]    = origin;</span><br><span class="line">    <span class="keyword">return</span> aligned;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span> **<span class="title">alignPointer</span><span class="params">(<span class="keyword">void</span> **ptr, <span class="keyword">size_t</span> alignment)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">void</span> **)((<span class="keyword">intptr_t</span>)((<span class="keyword">unsigned</span> <span class="keyword">char</span> *)ptr + alignment - <span class="number">1</span>) &amp; -alignment);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function"><span class="keyword">void</span> *<span class="title">MNNMemoryAllocAlign</span><span class="params">(<span class="keyword">size_t</span> size, <span class="keyword">size_t</span> alignment)</span> </span>&#123;</span><br><span class="line">    MNN_ASSERT(size &gt; <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> MNN_DEBUG_MEMORY</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">malloc</span>(size);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    <span class="keyword">void</span> **origin = (<span class="keyword">void</span> **)<span class="built_in">malloc</span>(size + <span class="keyword">sizeof</span>(<span class="keyword">void</span> *) + alignment);</span><br><span class="line">    MNN_ASSERT(origin != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span> (!origin) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> **aligned = alignPointer(origin + <span class="number">1</span>, alignment);</span><br><span class="line">    aligned[<span class="number">-1</span>]    = origin;</span><br><span class="line">    <span class="keyword">return</span> aligned;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function"><span class="keyword">void</span> <span class="title">MNNMemoryFreeAlign</span><span class="params">(<span class="keyword">void</span> *aligned)</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> MNN_DEBUG_MEMORY</span></span><br><span class="line">    <span class="built_in">free</span>(aligned);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    <span class="keyword">if</span> (aligned) &#123;</span><br><span class="line">        <span class="keyword">void</span> *origin = ((<span class="keyword">void</span> **)aligned)[<span class="number">-1</span>];</span><br><span class="line">        <span class="built_in">free</span>(origin);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我们分析一下以上代码。首先，为了保证内存对齐，我们可以在 <code>malloc</code> 分配时分配比所要求的内存大的内存容量，这样我们可以向下寻找一个保证是对齐大小的整倍数的内存地址。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">void</span> **)<span class="built_in">malloc</span>(size + <span class="keyword">sizeof</span>(<span class="keyword">void</span> *) + alignment)</span><br></pre></td></tr></table></figure>
 <p>然后我们向下寻找满足对齐需求的首地址，代码就是：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">void</span> **)((<span class="keyword">intptr_t</span>)((<span class="keyword">unsigned</span> <span class="keyword">char</span> *)ptr + alignment - <span class="number">1</span>) &amp; -alignment)</span><br></pre></td></tr></table></figure>
-<p><code>&amp;</code> 符号是按位与，<code>-alignment</code> 的补码表示就是 <code>aliginment</code> 符号位不变，其余位按位取反并加 1。我们以 AVX 所需要的 32 bytes 对齐为例，<code>alignment</code> 就是 256，二进制就是 <code>0...00000100000000</code>，<code>-alignment</code> 在计算中的表示就是 <code>1...11111100000000</code>，也就是后 8 位为 0，其余位为均为 1， 因此任何数与 <code>-alignment</code> 按位与的后 8 为都为 0，所以结果肯定是 32 bytes 对齐的。<code>((unsigned char *)ptr + alignment - 1) &amp; -alignment</code> 就相当于把 <code>ptr + alignment - 1</code> 的后 8 位置为 0，这个数比 <code>ptr + alignment - 1</code> 小，而且一定是对齐的。</p>
+<p><code>&amp;</code> 符号是按位与，<code>-alignment</code> 的补码表示就是 <code>aliginment</code> 符号位不变，其余位按位取反并加 1。我们以 AVX 所需要的 32 bytes 对齐为例，<code>alignment</code> 就是 256，二进制就是 <code>0...00000100000000</code>，<code>-alignment</code> 在计算中的表示就是 <code>1...11111100000000</code>，也就是后 8 位为 0，其余位为均为 1， 因此任何数与 <code>-alignment</code> 按位与的后 8 为都为 0，所以结果肯定是 32 bytes 对齐的。<code>((unsigned char *)ptr + alignment - 1) &amp; -alignment</code> 就相当于把 <code>ptr + alignment - 1</code> 的后 8 位置为 0，这个数比 <code>ptr + alignment - 1</code> 小，而且一定是对齐的。最后将<strong>真正的地址放在对齐后的地址前面，释放的时候取原始的地址及其前面的信息释放内存</strong>。</p>
 <p>通过以上代码，我们可以获取一块在堆上新创建的并且地址对齐的内存。</p>
 
     </div>
@@ -403,6 +411,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/blog/2020/04/tf-serialize-format.html" rel="prev" title="TensorFlow 序列化数据格式">
+                  TensorFlow 序列化数据格式 <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -472,7 +484,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">147</span>
+          <span class="site-state-item-count">148</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -523,7 +535,13 @@
         
           
         
-        <span class="site-state-item-count">18</span>
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -1276,7 +1294,15 @@
         
           
         
-        <span class="site-state-item-count">367</span>
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">371</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1347,12 +1373,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">489k</span>
+    <span title="站点总字数">494k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13:35</span>
+    <span title="站点阅读时长">13:44</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
